@@ -1,0 +1,2 @@
+class Petplace < ApplicationRecord
+end
