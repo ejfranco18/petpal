@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573498230/petpal/petpal_u9wq9q.png" %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573510309/petpal/petpal_xttxsm.png" %>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,11 +18,20 @@
       </li>
       <li class="nav-item">
         <% unless user_signed_in? %>
-          <%= link_to new_user_session_path do%>
+          <%= link_to new_user_registration_path do%>
             <button type="button" class="btn btn-info">Sign Up</button>
           <% end %>
         <% end %>
       </li>
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path do%>
+            <button type="button" class="btn btn-info">Log out</button>
+          <% end %>
+        <% end %>
+      </li>
+
+
 
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
