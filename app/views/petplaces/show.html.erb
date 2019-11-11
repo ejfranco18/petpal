@@ -1,0 +1,7 @@
+<div class="container">
+  <p><%= @petplace.name %></p>
+  <p><%= @petplace.details %></p>
+  <p><%= "#{@petplace.price}€" %></p>
+  <img src="<%= @petplace.images %>" alt="">
+  <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%></p>
+</div>

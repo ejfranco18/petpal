@@ -1,7 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+User.create!(first_name: "Montgomery", last_name: "Burns", email: "mburns@gmail.com", role: "Pet Owner", password: "123456", pet_name: "Drogon", pet_type: "Dog")
+User.create!(first_name: "Milhouse", last_name: "Van Houten", email: "mvanhouten@gmail.com", role: "Pet Owner", password: "123456", pet_name: "Viserion", pet_type: "Dog")
+User.create!(first_name: "Nelson", last_name: "Muntz", email: "nmuntz@gmail.com", role: "Pet Owner", password: "123456", pet_name: "Rhaegal", pet_type: "Cat")
+User.create!(first_name: "Sideshow", last_name: "Sideshow", email: "sbob@gmail.com", role: "Pet Sitter", password: "123456")
+User.create!(first_name: "Seymour", last_name: "Skinner", email: "sskinner@gmail.com", role: "Pet Sitter", password: "123456")
+Petplace.create(name: "Cypress Creek", details: "To alcohol! The cause of, and solution to, all of life's problems.", address: "Madrid", price: 30, images: "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573491212/petpal/ladogworks-indoor-dog-park_wy77tu.jpg",user_id: 4)
+Petplace.create(name: "Moe's Tavern", details: "If you pray to the wrong god, you might just make the right one madder and madder.", address: "Madrid", price: 50, images: "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573491410/petpal/dog-daycare-pic1_sth8ej.jpg",user_id: 5)

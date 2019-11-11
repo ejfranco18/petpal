@@ -1,0 +1,47 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573510309/petpal/petpal_xttxsm.png" %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <% unless user_signed_in? %>
+          <%= link_to new_user_session_path do%>
+            <button type="button" class="btn btn-outline-dark">Login</button>
+          <% end %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <% unless user_signed_in? %>
+          <%= link_to new_user_registration_path do%>
+            <button type="button" class="btn btn-info">Sign Up</button>
+          <% end %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path do%>
+            <button type="button" class="btn btn-info">Log out</button>
+          <% end %>
+        <% end %>
+      </li>
+
+
+
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Action", "#", class: "dropdown-item" %>
+            <%= link_to "Another action", "#", class: "dropdown-item" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Places</h1>
+
+  <% @petplaces.each do |petplace| %>
+    <li>
+      <%=  link_to petplace.name, petplace_path(petplace) %>
+      <p><%= petplace.details %></p>
+      <img src="<%= petplace.images %>" alt="">
+    </li>
+  <% end %>
+</div>
