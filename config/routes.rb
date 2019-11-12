@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get 'dashboard', to:'pages#dashboard'
   resources :petplaces do
     resources :appointments, only: [:new, :create]
   end
