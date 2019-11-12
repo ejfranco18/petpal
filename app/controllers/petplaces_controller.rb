@@ -4,10 +4,6 @@ class PetplacesController < ApplicationController
     @petplaces = Petplace.all
   end
 
-  def my_index
-
-  end
-
   def show
     @petplace = Petplace.find(params[:id])
   end
