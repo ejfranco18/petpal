@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_223000) do
+ActiveRecord::Schema.define(version: 2019_11_12_103214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "appointments", force: :cascade do |t|
+  create_table "appoinments", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
     t.string "status"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2019_11_11_223000) do
     t.bigint "petplace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["petplace_id"], name: "index_appointments_on_petplace_id"
-    t.index ["user_id"], name: "index_appointments_on_user_id"
+    t.index ["petplace_id"], name: "index_appoinments_on_petplace_id"
+    t.index ["user_id"], name: "index_appoinments_on_user_id"
   end
 
   create_table "petplaces", force: :cascade do |t|
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 2019_11_11_223000) do
     t.integer "rating"
     t.text "description"
     t.string "images"
-    t.bigint "appointment_id"
+    t.bigint "appoinment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["appointment_id"], name: "index_reviews_on_appointment_id"
+    t.index ["appoinment_id"], name: "index_reviews_on_appoinment_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_223000) do
     t.string "role"
     t.string "user_image"
     t.string "pet_image"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
