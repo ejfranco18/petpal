@@ -4,4 +4,10 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @petplaces = Petplace.where("user_id = #{current_user.id}")
+
+
+  end
 end
