@@ -10,10 +10,12 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <%= render 'components/navbar' %>
-    <%= yield %>
-    <!-- <%= javascript_include_tag 'application' %> -->
-    <%= javascript_pack_tag 'application' %>
-    <%= javascript_pack_tag %>
+    <div class="main-wrapper">
+      <%= render 'components/navbar' %>
+      <%= yield %>
+      <%= render 'components/footer' %>
+      <%= javascript_include_tag 'application' %>
+      <%= javascript_pack_tag 'application' %>
+    </div>
   </body>
 </html>
