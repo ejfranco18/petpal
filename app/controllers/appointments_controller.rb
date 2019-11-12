@@ -24,12 +24,13 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+
     @appointment = Appointment.new(appointment_params)
     # if @user
     @appointment.user = @user
     @appointment.petplace = @petplace
-    @appointment.status = 'pending'
-    @appointment.save
+    @appointment.status = 'Pending'
+    @appointment.save!
     redirect_to petplace_path(@petplace) # maybe has to be changed to confirmation page
   end
 
@@ -49,7 +50,7 @@ class AppointmentsController < ApplicationController
   end
 
   def set_petplace
-    @petplace = Petplace.find(params[:id])
+    @petplace = Petplace.find(params[:petplace_id])
   end
 
   def set_appointment

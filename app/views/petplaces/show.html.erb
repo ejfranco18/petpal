@@ -20,7 +20,7 @@
   <% end %>
 
 <!-- Remember to update the path to booking -->
-<%=link_to petplaces_path do %>
+<%=link_to new_petplace_appointment_path(params[:id]) do %>
   <div class="btn btn-flat">Book</div>
   <% end %>
 
@@ -34,7 +34,7 @@
     <%= simple_form_for :search, method: "get" do |f| %>
       <%= f.input :starts_at, as: :string, required: false, input_html: {class: "datepicker"} %>
       <%= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.button :submit, "Go", class: "btn btn-primary" %>
+      <%= f.button :submit, "Request booking", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
