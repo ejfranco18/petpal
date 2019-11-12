@@ -1,11 +1,25 @@
-<div class="container">
-  <h1>Places</h1>
+<div class="container-index">
+  <div class="titles">
+  <h3>You have picked:</h3>
 
-  <% @petplaces.each do |petplace| %>
-    <li>
-      <%=  link_to petplace.name, petplace_path(petplace) %>
-      <p><%= petplace.details %></p>
-      <img src="<%= petplace.images %>" alt="">
-    </li>
-  <% end %>
+  <p>These are our sitters in your chosen area</p>
 </div>
+  <div class="cards">
+
+    <% @petplaces.each do |petplace| %>
+    <div class="pet-card">
+
+        <p><%=  link_to petplace.name, petplace_path(petplace) %></p>
+        <p><%= petplace.details %></p>
+        <img src="<%= petplace.images %>" alt="">
+    </div>
+
+    <% end %>
+
+  </div>
+
+</div>
+
+
+
+
