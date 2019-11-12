@@ -1,4 +1,4 @@
-class Appoinment < ApplicationRecord
+class Appointment < ApplicationRecord
   has_many :reviews
   belongs_to :users
   belongs_to :petplaces
