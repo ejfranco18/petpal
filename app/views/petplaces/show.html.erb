@@ -1,7 +1,40 @@
-<div class="container">
-  <img src="<%= @petplace.images %>" alt="">
+
+
+<div class="banner-show"><img src="<%= @petplace.images %>" alt=""></div>
+
+<div class="container-show">
+
+  <h4><%= @petplace.address %></h4>
   <p><%= @petplace.name %></p>
   <p><%= @petplace.details %></p>
-  <p><%= "#{@petplace.price}€" %></p>
+  <h4>Reviews</h4>
+
+  <p><%= @petplace.reviews %></p>
   <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%></p>
+  <p><%= "#{@petplace.price}€" %></p>
+  <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+
+
+  <%=link_to petplaces_path do %>
+  <div class="btn btn-ghost">Back</div>
+  <% end %>
+
+<!-- Remember to update the path to booking -->
+<%=link_to petplaces_path do %>
+  <div class="btn btn-flat">Book</div>
+  <% end %>
+
+</div>
+
+
+<div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h2>Flatpickr Demo</h2>
+
+    <%= simple_form_for :search, method: "get" do |f| %>
+      <%= f.input :starts_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.button :submit, "Go", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
