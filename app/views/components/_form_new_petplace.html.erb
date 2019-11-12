@@ -1,4 +1,4 @@
-<h2>New form petplace</h2>
+<h1>Create a new Pet Place</h1>
 <% if @petplace.errors.any? %>
   <div class="errors-container">
     <ul>
@@ -11,6 +11,7 @@
 <%= simple_form_for(@petplace) do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
+  <%= f.label :details %>
   <%= f.text_area :details %>
   <%= f.input :price %>
   <%= f.input :images %>
