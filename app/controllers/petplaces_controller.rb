@@ -1,7 +1,12 @@
 class PetplacesController < ApplicationController
   def index
-    @petplaces = Petplace.all
-    petplaces_geo = Petplace.geocoded #returns flats with coordinates
+    if params[:query].present?
+      @petplaces = Petplace.near(params[:query], '20')
+    else
+      @petplaces = Petplace.all
+
+    end
+    petplaces_geo = @petplaces.geocoded #returns flats with coordinates
 
     @markers = petplaces_geo.map do |petplace|
       {
