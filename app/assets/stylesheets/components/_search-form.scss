@@ -1,12 +1,14 @@
-.search-form-control {
-  position: relative;
+.form-group {
+  width: 30%;
 }
 
-.search-form-control .btn {
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  right: 8px;
+.form-group {
+  .btn {
+    margin: 20px 0 0 0;
+    &:hover {
+      color: #737373;
+    }
+  }
 }
 
 .search-form-control .form-control {
