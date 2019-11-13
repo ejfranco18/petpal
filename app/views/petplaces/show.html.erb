@@ -2,6 +2,13 @@
 
   <div class="banner-show"><img src="<%= @petplace.images %>" alt=""></div>
 
+    <%=link_to petplaces_path do %>
+    <div class="btn btn-ghost">Back</div>
+    <% end %>
+
+    <%=link_to new_petplace_appointment_path(params[:id]) do %>
+    <div class="btn btn-flat">Book</div>
+    <% end %>
   <div class="petplace">
 
     <h4><%= @petplace.address %></h4>
@@ -14,27 +21,7 @@
     <p><%= "#{@petplace.price}€" %></p>
     <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
 
-
-    <%=link_to petplaces_path do %>
-    <div class="btn btn-ghost">Back</div>
-    <% end %>
-
-
-  <%=link_to new_petplace_appointment_path(params[:id]) do %>
-    <div class="btn btn-flat">Book</div>
-    <% end %>
-
   </div>
-
-
-  <%=link_to edit_petplace_path(params[:id]) do %>
-    <div class="btn btn-flat">Edit</div>
-    <% end %>
-
-
-  <%=link_to petplace_path(@petplace), method: :delete do %>
-    <div class="btn btn-flat">Delete</div>
-    <% end %>
 
   </div>
 

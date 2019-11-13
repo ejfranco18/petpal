@@ -41,7 +41,7 @@ class PetplacesController < ApplicationController
   def destroy
     @petplace = Petplace.find(params[:id])
     @petplace.destroy
-    redirect_to petplaces_path, notice: 'Petplace was successfully destroyed.'
+    redirect_to dashboard_path, notice: 'Petplace was successfully destroyed.'
   end
 
   private
