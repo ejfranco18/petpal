@@ -1,7 +1,16 @@
 class PetplacesController < ApplicationController
   def index
-
     @petplaces = Petplace.all
+    petplaces_geo = Petplace.geocoded #returns flats with coordinates
+
+    @markers = petplaces_geo.map do |petplace|
+      {
+        lat: petplace.latitude,
+        lng: petplace.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { petplace: petplace }),
+        image_url: helpers.asset_url('paw.png')
+      }
+    end
   end
 
   def show
