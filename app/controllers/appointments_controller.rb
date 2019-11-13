@@ -1,4 +1,20 @@
 class AppointmentsController < ApplicationController
+  before_action :set_user, only: [:new, :create] #, :edit, :update needet to be added?
+  before_action :set_petplace, only: [:new, :create]
+  before_action :set_appointment, only: [:status_accepted, :status_declined]
+
+  def status_accepted
+    @appointment.status = 'accepted'
+  end
+
+  def status_declined
+    @appointment.status = 'canceled'
+  end
+
+  def index
+    @appointments = Appointment.all
+  end
+
   def show
     @appointment = Appointment.find(params[:id])
   end
@@ -8,7 +24,14 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new()
+
+    @appointment = Appointment.new(appointment_params)
+    # if @user
+    @appointment.user = @user
+    @appointment.petplace = @petplace
+    @appointment.status = 'Pending'
+    @appointment.save!
+    redirect_to petplace_path(@petplace) # maybe has to be changed to confirmation page
   end
 
   # def edit
@@ -22,7 +45,19 @@ class AppointmentsController < ApplicationController
 
   private
 
-  def petplace_params
+  def set_user
+    @user = current_user
+  end
 
+  def set_petplace
+    @petplace = Petplace.find(params[:petplace_id])
+  end
+
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def appointment_params
+    params.require(:appointment).permit(:start_date, :end_date)
   end
 end

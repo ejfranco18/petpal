@@ -7,15 +7,13 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
-    <div class="main-wrapper">
       <%= render 'components/navbar' %>
       <%= yield %>
       <%= render 'components/footer' %>
       <%= javascript_include_tag 'application' %>
       <%= javascript_pack_tag 'application' %>
-    </div>
   </body>
 </html>
