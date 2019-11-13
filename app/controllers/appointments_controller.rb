@@ -7,6 +7,13 @@ class AppointmentsController < ApplicationController
     @appointment.status = 'accepted'
   end
 
+  def status_pending
+    @appointment = Appointment.find(params[:id])
+    @appointment.status = 'pending'
+    @appointment.save
+    redirect_to dashboard_path, alert: 'Booking updated'
+  end
+
   def status_declined
     @appointment.status = 'canceled'
   end
@@ -17,6 +24,7 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
+    @petplace = Petplace.find(@appointment.petplace_id)
   end
 
   def new
@@ -24,14 +32,13 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-
     @appointment = Appointment.new(appointment_params)
     # if @user
     @appointment.user = @user
     @appointment.petplace = @petplace
-    @appointment.status = 'Pending'
+    @appointment.status = 'selected'
     @appointment.save!
-    redirect_to petplace_path(@petplace) # maybe has to be changed to confirmation page
+    redirect_to appointment_path(@appointment) # maybe has to be changed to confirmation page
   end
 
   # def edit
