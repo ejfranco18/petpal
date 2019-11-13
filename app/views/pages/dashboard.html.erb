@@ -2,13 +2,25 @@
   <div class="titles">
     <h3>Your places:</h3>
   </div>
+
   <div class="cards">
     <% @petplaces.each do |petplace| %>
       <div class="pet-card">
         <p><%=  link_to petplace.name, petplace_path(petplace) %></p>
+        <span>
+          <%=link_to edit_petplace_path(petplace) do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%=link_to petplace_path(petplace), method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </span>
         <p><%= petplace.details %></p>
         <img src="<%= petplace.images %>" alt="">
       </div>
     <% end %>
   </div>
-</div>
+
+
+
+
