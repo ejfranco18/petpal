@@ -37,5 +37,22 @@
         <%= f.button :submit, "Request booking", class: "btn btn-primary" %>
       <% end %>
     </div>
+
+    <br>
+
+    <ul class="list-group">
+      <% @petplace.reviews.each do |review| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="badge badge-primary badge-pill">
+            <% counter = 0 %>
+            <% 5.times do %>
+              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+              <% counter += 1 %>
+            <% end %>
+          </span>
+          <%= review.description %>
+        </li>
+      <% end %>
+
   </div>
 </div>
