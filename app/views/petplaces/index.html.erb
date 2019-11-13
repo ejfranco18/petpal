@@ -6,7 +6,7 @@
   <div class="cards">
     <% @petplaces.each do |petplace| %>
     <div class="pet-card">
-        <p><%=  link_to petplace.name, petplace_path(petplace) %></p>
+        <p><%= link_to petplace.name, petplace_path(petplace) %></p>
         <p><%= petplace.details %></p>
         <img src="<%= petplace.images %>" alt="">
     </div>
