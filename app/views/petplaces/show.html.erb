@@ -19,7 +19,15 @@
     <p><%= @petplace.reviews %></p>
     <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%></p>
     <p><%= "#{@petplace.price}€" %></p>
-    <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+    <img class="avatar-large" alt="avatar-large" src="<%= @petplace.user.user_image %>" />
+    <div
+        id="map"
+        style="width: 100%;
+        height: 400px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        >
+      </div>
   </div>
 </div>
 

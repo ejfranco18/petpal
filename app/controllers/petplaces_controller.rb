@@ -20,6 +20,13 @@ class PetplacesController < ApplicationController
 
   def show
     @petplace = Petplace.find(params[:id])
+
+    @markers = [{
+        lat: @petplace.latitude,
+        lng: @petplace.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { petplace: @petplace }),
+        image_url: helpers.asset_url('paw.png')
+      }]
   end
 
   def new

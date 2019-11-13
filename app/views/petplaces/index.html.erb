@@ -1,24 +1,28 @@
 <div class="container card_list">
   <div class="titles">
-  <h3>You have picked:</h3>
-  <p>These are our sitters in your chosen area</p>
-</div>
-  <div class="cards">
-    <% @petplaces.each do |petplace| %>
-    <div class="pet-card">
-        <p><%= link_to petplace.name, petplace_path(petplace) %></p>
-        <p><%= petplace.details %></p>
-        <img src="<%= petplace.images %>" alt="">
-    </div>
-    <% end %>
+    <h3>You have picked:</h3>
+    <p>These are our sitters in your chosen area</p>
   </div>
-  <h3 class="titles">Find a place near your area</h3>
-  <div
-    id="map"
-    style="width: 100%;
-    height: 600px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    >
+  <div class="wrapper-petplace">
+    <div class="cards">
+      <% @petplaces.each do |petplace| %>
+      <div class="pet-card">
+          <p><%= link_to petplace.name, petplace_path(petplace) %></p>
+          <p><%= petplace.details %></p>
+          <img src="<%= petplace.images %>" alt="">
+      </div>
+      <% end %>
+    </div>
+    <div class="map-container">
+      <h3 class="titles">Find a place near your area</h3>
+      <div
+        id="map"
+        style="width: 100%;
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        >
+      </div>
+    </div>
   </div>
 </div>
