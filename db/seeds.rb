@@ -1,3 +1,8 @@
+User.destroy_all
+Petplace.destroy_all
+Appointment.destroy_all
+Review.destroy_all
+
 User.create!(first_name: "Montgomery", last_name: "Burns", email: "mburns@gmail.com", role: "Pet Owner", password: "123456", pet_name: "Drogon", pet_type: "Dog", user_image: "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573555175/petpal/burns_vwuzh1.jpg")
 User.create!(first_name: "Milhouse", last_name: "Van Houten", email: "mvanhouten@gmail.com", role: "Pet Owner", password: "123456", pet_name: "Viserion", pet_type: "Dog")
 User.create!(first_name: "Nelson", last_name: "Muntz", email: "nmuntz@gmail.com", role: "Pet Owner", password: "123456", pet_name: "Rhaegal", pet_type: "Cat")
@@ -6,8 +11,9 @@ User.create!(first_name: "Seymour", last_name: "Skinner", email: "sskinner@gmail
 
 puts "Users created"
 
+Petplace.create(name: "Cypress Creek", details: "To alcohol! The cause of, and solution to, all of life's problems.", address: "Calle Linares 20, Madrid", price: 30, images: "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573491212/petpal/ladogworks-indoor-dog-park_wy77tu.jpg",user_id: 4)
+Petplace.create(name: "Moe's Tavern", details: "If you pray to the wrong god, you might just make the right one madder and madder.", address: "Calle de Sta Engracia 37, Madrid", price: 50, images: "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573491410/petpal/dog-daycare-pic1_sth8ej.jpg",user_id: 5)
 Petplace.create(name: "Cypress Creek", details: "To alcohol! The cause of, and solution to, all of life's problems.", address: "Madrid", price: 30, images: "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573491212/petpal/ladogworks-indoor-dog-park_wy77tu.jpg",user_id: 4)
-Petplace.create(name: "Moe's Tavern", details: "If you pray to the wrong god, you might just make the right one madder and madder.", address: "Madrid", price: 50, images: "https://res.cloudinary.com/dvod2ra7g/image/upload/v1573491410/petpal/dog-daycare-pic1_sth8ej.jpg",user_id: 5)
 
 puts "Petplaces created"
 
