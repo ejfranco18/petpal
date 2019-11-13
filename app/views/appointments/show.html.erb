@@ -17,8 +17,12 @@
     <div class="card">
       <h2>TOTAL:</h2>
       <div><p>Starting Date: <%= @appointment.start_date %></p></div>
-      <div><p>Starting Date: <%= @appointment.start_date %></p></div>
-      <p>Ending Date:</p>
+      <div><p>Ending Date: <%= @appointment.end_date %></p></div>
+      <div><p>Duration: <% duration = (@appointment.end_date - @appointment.start_date) %> <%= duration.to_i %> Days</p></div>
+      <div><p>Price per Day: <%=  %></p></div>
+      <div><p><%= @petplace.price %>€ x <%= duration.to_i %> Days: <%= (@petplace.price * duration).to_i %>€</p></div>
+      <div><p>Included VAT (21%): €<%= ((@petplace.price * duration).to_i) * 0.21 %></p></div>
+      <div><p>TOTAL: €<%= ((@petplace.price * duration).to_i)%></p></div>
     </div>
 
 
