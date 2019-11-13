@@ -27,6 +27,29 @@
 </div>
 
 
+  <h3>Reviews</h3>
+  <% if @appointment.reviews.empty? %>
+    <p>Be the first to let a review</p>
+  <% else %>
+    <ul class="list-group">
+      <% @appointment.reviews.each do |review| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="badge badge-primary badge-pill">
+            <% counter = 0 %>
+            <% 5.times do %>
+              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+              <% counter += 1 %>
+            <% end %>
+          </span>
+          <%= review.content %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<%= render "reviews/new", petplace: @petplace, review: @review %>
+
+
 <div class="container">
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
     <h2>Flatpickr Demo</h2>
