@@ -1,0 +1,34 @@
+
+<h1>Confirmation page for Appointment</h1>
+
+<div class="petplace">
+
+    <h4><%= @petplace.address %></h4>
+    <p><%= @petplace.name %></p>
+    <p><%= @petplace.details %></p>
+    <!-- <h4>Reviews</h4> -->
+
+    <%# review_total = 0 %>
+    <%# @petplace.reviews.each do |review| %>
+    <%# review_total += review.rating %>
+    <%# end %>
+    <!-- <p> total: <%#= review.total %></p> -->
+    <!-- <p> number of reviews: <%#= @petplace.reviews.size %></p> -->
+    <div class="card">
+      <h2>TOTAL:</h2>
+      <div><p>Starting Date: <%= @appointment.start_date %></p></div>
+      <div><p>Starting Date: <%= @appointment.start_date %></p></div>
+      <p>Ending Date:</p>
+    </div>
+
+
+    <%=link_to petplaces_path do %>
+    <div class="btn btn-ghost">Back</div>
+    <% end %>
+
+  <!-- Remember to update the path to booking -->
+  <%=link_to new_petplace_appointment_path(params[:id]) do %>
+    <div class="btn btn-flat">Book</div>
+    <% end %>
+
+</div>
