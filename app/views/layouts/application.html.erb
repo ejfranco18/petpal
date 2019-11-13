@@ -10,6 +10,9 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
+      <% if alert %>
+      <%= render  'components/flashes' %>
+      <% end %>
       <%= render 'components/navbar' %>
       <%= yield %>
       <%= render 'components/footer' %>

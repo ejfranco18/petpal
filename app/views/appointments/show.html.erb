@@ -14,7 +14,7 @@
     <%# end %>
     <!-- <p> total: <%#= review.total %></p> -->
     <!-- <p> number of reviews: <%#= @petplace.reviews.size %></p> -->
-    <div class="card">
+    <div class="card check">
       <h2>TOTAL:</h2>
       <div><p>Starting Date: <%= @appointment.start_date %></p></div>
       <div><p>Ending Date: <%= @appointment.end_date %></p></div>
@@ -26,13 +26,13 @@
     </div>
 
 
-    <%=link_to petplaces_path do %>
+    <%=link_to petplace_path(Petplace.find(Appointment.find(params[:id]).petplace_id)) do %>
     <div class="btn btn-ghost">Back</div>
     <% end %>
 
   <!-- Remember to update the path to booking -->
-  <%=link_to new_petplace_appointment_path(params[:id]) do %>
-    <div class="btn btn-flat">Book</div>
+  <%=link_to pending_path(@appointment), method: :patch do %>
+    <div class="btn btn-flat">Confirm booking</div>
     <% end %>
 
 </div>

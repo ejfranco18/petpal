@@ -7,6 +7,13 @@ class AppointmentsController < ApplicationController
     @appointment.status = 'accepted'
   end
 
+  def status_pending
+    @appointment = Appointment.find(params[:id])
+    @appointment.status = 'pending'
+    @appointment.save
+    redirect_to dashboard_path, alert: 'Booking updated'
+  end
+
   def status_declined
     @appointment.status = 'canceled'
   end
