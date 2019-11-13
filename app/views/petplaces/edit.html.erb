@@ -1,0 +1,20 @@
+<h1>Update your Pet Place</h1>
+<% if @petplace.errors.any? %>
+  <div class="errors-container">
+    <ul>
+      <% @petplace.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= simple_form_for(@petplace) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.label :details %>
+  <%= f.text_area :details %>
+  <%= f.input :price %>
+  <%= f.input :images %>
+
+  <%= f.submit "Update a petplace", class: "btn btn-primary" %>
+<% end %>

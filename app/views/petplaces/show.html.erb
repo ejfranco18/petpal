@@ -19,7 +19,7 @@
     <div class="btn btn-ghost">Back</div>
     <% end %>
 
-  <!-- Remember to update the path to booking -->
+
   <%=link_to new_petplace_appointment_path(params[:id]) do %>
     <div class="btn btn-flat">Book</div>
     <% end %>
@@ -27,15 +27,14 @@
   </div>
 
 
-  <div class="container">
-    <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-      <h2>Flatpickr Demo</h2>
+  <%=link_to edit_petplace_path(params[:id]) do %>
+    <div class="btn btn-flat">Edit</div>
+    <% end %>
 
-      <%= simple_form_for :search, method: "get" do |f| %>
-        <%= f.input :starts_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.button :submit, "Request booking", class: "btn btn-primary" %>
-      <% end %>
-    </div>
+
+  <%=link_to petplace_path(@petplace), method: :delete do %>
+    <div class="btn btn-flat">Delete</div>
+    <% end %>
+
   </div>
-</div>
+

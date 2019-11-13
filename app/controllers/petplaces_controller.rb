@@ -28,9 +28,28 @@ class PetplacesController < ApplicationController
     end
   end
 
+  def edit
+    @petplace = Petplace.find(params[:id])
+  end
+
+  def update
+    @petplace = Petplace.find(params[:id])
+    @petplace.update(petplace_params)
+    redirect_to petplace_path(@petplace)
+  end
+
+  def destroy
+    @petplace = Petplace.find(params[:id])
+    @petplace.destroy
+    redirect_to petplaces_path, notice: 'Petplace was successfully destroyed.'
+  end
+
   private
 
   def petplace_params
     params.require(:petplace).permit(:name, :address, :details, :price, :images)
   end
 end
+
+
+# edit, update, destroy tole je destination
