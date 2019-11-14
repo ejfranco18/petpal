@@ -1,27 +1,71 @@
 <div class="container card_list">
   <div class="titles">
-    <h3>Your places:</h3>
+    <h3>Bookings at your places:</h3>
   </div>
 
-  <div class="cards">
-    <% @petplaces.each do |petplace| %>
-      <div class="pet-card">
-        <p><%=  link_to petplace.name, petplace_path(petplace) %></p>
-        <span>
-          <%=link_to edit_petplace_path(petplace) do %>
-            <i class="far fa-edit"></i>
+  <div class="card-group">
+    <div class="card">
+      <% @petplaces.each do |petplace| %>
+        <div class="pet-card" id="card-petplaces-dashboard">
+          <p><%=  link_to petplace.name, petplace_path(petplace) %></p>
+          <span>
+            <%=link_to edit_petplace_path(petplace) do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+            <%=link_to petplace_path(petplace), method: :delete do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </span>
+          <p><%= petplace.details %></p>
+          <img src="<%= petplace.images %>" alt="">
+          <div class="card_list">
+          <p>BOOKINGS:</p>
+          <% petplace.appointments.each do |appointment| %>
+          <div class="pet-card" id="wider">
+            <%= appointment.user.first_name %>
+            <%= appointment.user.last_name %>
+            <%= appointment.user.pet_name %>
+            <%= appointment.user.pet_type %>
+            <%= appointment.start_date %>
+            <%= appointment.end_date %>
+            <%= appointment.status %>
+          </div>
           <% end %>
-          <%=link_to petplace_path(petplace), method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
-        </span>
-        <p><%= petplace.details %></p>
-        <img src="<%= petplace.images %>" alt="">
-      </div>
-    <% end %>
+        </div>
+        </div>
+
+
+
+      <% end %>
+    </div>
   </div>
+
+  <div class="card-deck">
+  <% @petplaces.each do |petplace| %>
+  <div class="card">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), src="<%= petplace.images %>">
+    </div>
+
+  </div>
+  <% end %>
 </div>
 
 
+
+<%# @petplaces.each do |petplace| %>
+  <!-- <h1><%#= petplace.name %></h1> -->
+  <%# petplace.appointments.each do |appointment| %>
+  <!-- <ul> -->
+    <!-- <li><%#= appointment.name %></li> -->
+  <!-- </ul> -->
+  <%# end %>
+<%# end %>
+
+<!-- <div class="cards">
+  <%# @appointments_booked.each do |booking| %>
+    <p><%#=  link_to petplace.name, petplace_path(petplace) %></p>
+  <%# end %>
+</div>
+ -->
 
 
