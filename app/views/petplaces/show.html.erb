@@ -1,42 +1,73 @@
 <div class="container">
 
-  <div class="banner-show"><img src="<%= @petplace.images %>" alt=""></div>
+  <div class="petplace">
+    <h2><%= @petplace.name %></h2>
+    <p><%= @petplace.address %></p>
+  <div class="petplace-main">
+    <div class="slide">
+      <%= render 'components/slide', images: @images %>
+    </div>
+    <div class="info-box">
 
-  <br>
-
-    <%=link_to petplaces_path do %>
-    <div class="btn btn-ghost">Back</div>
+<div class="card-product">
+  <div class="card-product-infos">
+    <h2><%= @petplace.name %></h2>
+    <p><%= @petplace.address %></p>
+    <p>Price per night: <%= "#{@petplace.price}€" %></p>
+    <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%><img class="avatar" alt="" src="<%= @petplace.user.user_image %>" /></p>
+    <% if @rating > 0 %>
+      <p>Rating:
+        <% @rating.times do %>
+        <i class="fas fa-bone positive"></i>
+        <% end %>
+        <% (5 - @rating).times do %>
+        <i class="fas fa-bone negative"></i>
+        <% end %>
+      </p>
+      <% end %>
+    <%=link_to new_petplace_appointment_path(params[:id]) do %>
+      <div class="btn btn-flat">Book</div>
     <% end %>
+  </div>
+</div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+    <p><%= @petplace.details %></p>
+
+    <h4>Reviews</h4>
+    <div class="review">
+      <% if @rating > 0 %>
+        <% @petplace.reviews.each do |review| %>
+          <div class="card-review">
+            <div class="card-review-infos">
+              <h2><%= "#{review.appointment.user.first_name} #{review.appointment.user.last_name}" %><img class="avatar" alt="" src="<%= review.appointment.user.user_image %>" /></h2>
+              <p><%= review.description %></p>
+              <p>Rated:
+                <% review.rating.times do %>
+                <i class="fas fa-bone positive"></i>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                <i class="fas fa-bone negative"></i>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No reviews yet.</<p>
+      <% end %>
+    </div>
 
     <%=link_to new_petplace_appointment_path(params[:id]) do %>
-    <div class="btn btn-flat">Book</div>
+    <div class="btn btn-flat book-petplace">Book</div>
     <% end %>
-  <div class="petplace">
-
-    <h4><%= @petplace.address %></h4>
-    <p><%= @petplace.name %></p>
-    <p><%= @petplace.details %></p>
-    <h4>Reviews</h4>
-
-    <ul class="list-group">
-      <% @petplace.reviews.each do |review| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="badge badge-primary badge-pill">
-            <% counter = 0 %>
-            <% 5.times do %>
-              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-              <% counter += 1 %>
-            <% end %>
-          </span>
-          <%= review.appointment.user.first_name %>
-          <%= 'comment: ' %>
-          <%= review.description %>
-        </li>
-      <% end %>
-
-    <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%></p>
-    <p><%= "#{@petplace.price}€" %></p>
-    <img class="avatar-large" alt="avatar-large" src="<%= @petplace.user.user_image %>" />
     <div
         id="map"
         style="width: 100%;
