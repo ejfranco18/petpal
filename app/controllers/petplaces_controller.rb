@@ -28,6 +28,11 @@ class PetplacesController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { petplace: @petplace }),
         image_url: helpers.asset_url('paw.png')
       }]
+    @rating = 0
+    @petplace.reviews.each do |review|
+      @rating += review.rating
+    end
+    @rating = @rating / @petplace.reviews.size
   end
 
   def new

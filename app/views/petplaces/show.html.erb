@@ -1,7 +1,7 @@
 <div class="container">
   <div class="petplace">
-    <h4><%= @petplace.address %></h4>
-    <p><%= @petplace.name %></p>
+    <h2><%= @petplace.name %></h2>
+    <p><%= @petplace.address %></p>
   <div class="petplace-main">
     <div class="slide">
       <div class="glide">
@@ -12,15 +12,55 @@
             <% end %>
           </ul>
         </div>
+
+        <div data-glide-el="controls">
+    <button class="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev" data-glide-dir="<">
+      <i class="fas fa-arrow-left"></i>
+        <path d="M0 12l10.975 11 2.848-2.828-6.176-6.176H24v-3.992H7.646l6.176-6.176L10.975 1 0 12z"></path>
+      </svg>
+    </button>
+
+    <button class="slider__arrow slider__arrow--next glide__arrow glide__arrow--next" data-glide-dir=">">
+      <i class="fas fa-arrow-right"></i>
+        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"></path>
+      </svg>
+    </button>
+  </div>
+
+<!--   <div class="glide__bullets" data-glide-el="controls[nav]">
+    <button class="glide__bullet" data-glide-dir="=0"></button>
+    <button class="glide__bullet" data-glide-dir="=1"></button>
+    <button class="glide__bullet" data-glide-dir="=2"></button>
+  </div> -->
+
       </div>
     </div>
     <div class="info-box">
-      <h4><%= @petplace.address %></h4>
-      <p><%= @petplace.name %></p>
-      <p><%= "#{@petplace.price}€" %></p>
-      <%=link_to new_petplace_appointment_path(params[:id]) do %>
-        <div class="btn btn-flat">Book</div>
+
+
+<div class="card-product">
+  <div class="card-product-infos">
+    <h2><%= @petplace.name %></h2>
+    <p><%= @petplace.address %></p>
+    <p>Price per night: <%= "#{@petplace.price}€" %></p>
+    <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%><img class="avatar" alt="" src="<%= @petplace.user.user_image %>" /></p>
+    <p>Rating:
+      <% @rating.times do %>
+      <i class="fas fa-bone positive"></i>
       <% end %>
+      <% (5 - @rating).times do %>
+      <i class="fas fa-bone negative"></i>
+      <% end %>
+    </p>
+    <%=link_to new_petplace_appointment_path(params[:id]) do %>
+      <div class="btn btn-flat">Book</div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
     </div>
   </div>
 
@@ -28,31 +68,28 @@
 
     <p><%= @petplace.details %></p>
 
-    <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%><img class="avatar-large" alt="avatar-large" src="<%= @petplace.user.user_image %>" /></p>
-    <ul class="list-group">
-      <% @petplace.reviews.each do |review| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="badge badge-primary badge-pill">
-            <% counter = 0 %>
-            <% 5.times do %>
-              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-              <% counter += 1 %>
-            <% end %>
-          </span>
-          <%= review.appointment.user.first_name %>
-          <%= 'comment: ' %>
-          <%= review.description %>
-        </li>
-      <% end %>
-
-    <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%></p>
-
-    <p><%= "#{@petplace.price}€" %></p>
     <h4>Reviews</h4>
-    <p><%= @petplace.reviews %></p>
+    <div class="review">
+      <% @petplace.reviews.each do |review| %>
+        <div class="card-review">
+        <div class="card-review-infos">
+          <h2><%= "#{review.appointment.user.first_name} #{review.appointment.user.last_name}" %><img class="avatar" alt="" src="<%= review.appointment.user.user_image %>" /></h2>
+          <p><%= review.description %></p>
+          <p>Rated:
+            <% review.rating.times do %>
+            <i class="fas fa-bone positive"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+            <i class="fas fa-bone negative"></i>
+            <% end %>
+          </p>
+        </div>
+    </div>
+    <% end %>
+    </div>
 
     <%=link_to new_petplace_appointment_path(params[:id]) do %>
-    <div class="btn btn-flat">Book</div>
+    <div class="btn btn-flat book-petplace">Book</div>
     <% end %>
     <div
         id="map"
@@ -63,6 +100,5 @@
         >
       </div>
   </div>
-
 </div>
 

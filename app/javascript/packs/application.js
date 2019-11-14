@@ -7,4 +7,7 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 initMapbox();
 initAutocomplete();
-new Glide('.glide').mount()
+new Glide('.glide', {
+  type: 'carousel',
+  startAt: 0,
+}).mount()
