@@ -5,8 +5,10 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
+      <%= f.input :first_name,
+                  required: true %>
+      <%= f.input :last_name,
+                  required: true %>
 
       <%= f.input :email,
                   required: true,
@@ -22,7 +24,9 @@
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :pet_name %>
       <%= f.input :pet_type %>
-       <%= f.input :role, collection: ['Pet Sitter', 'Pet Owner'] %>
+       <%= f.input :role,
+                   required: true,
+                   collection: ['Pet Sitter', 'Pet Owner'] %>
     </div>
 
     <div class="form-actions">
