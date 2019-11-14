@@ -1,20 +1,31 @@
-<h1>Update your Pet Place</h1>
-<% if @petplace.errors.any? %>
-  <div class="errors-container">
-    <ul>
-      <% @petplace.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-<%= simple_form_for(@petplace) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.label :details %>
-  <%= f.text_area :details %>
-  <%= f.input :price %>
-  <%= f.input :images %>
+<div class="container-form">
+  <h2 class="signup">Update your Pet Place</h2>
 
-  <%= f.submit "Update a petplace", class: "btn btn-primary" %>
-<% end %>
+  <div class="sign-up-form">
+      <% if @petplace.errors.any? %>
+        <div class="errors-container">
+          <ul>
+            <% @petplace.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+    <div class="styling-container">
+      <%= simple_form_for(@petplace) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.label :details %>
+        <%= f.text_area :details %>
+        <%= f.input :price %>
+        <%= f.input :images %>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Update"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
