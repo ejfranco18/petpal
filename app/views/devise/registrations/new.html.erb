@@ -1,10 +1,12 @@
-<div class="container">
-  <h2>Sign up</h2>
+<div class="container-form">
 
+  <h2 class="signup">Sign up</h2>
+
+<div class="sign-up-form">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
+  <div class="styling-container">
 
-    <div class="form-inputs">
       <%= f.input :first_name,
                   required: true %>
       <%= f.input :last_name,
@@ -27,12 +29,14 @@
        <%= f.input :role,
                    required: true,
                    collection: ['Pet Sitter', 'Pet Owner'] %>
-    </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-  <% end %>
 
-  <%= render "devise/shared/links" %>
+        <div class="form-actions">
+        <%= f.button :submit, "Sign up" %>
+        <% end %>
+        </div>
+        </div>
+      <%= render "devise/shared/links" %>
+  </div>
+
 </div>
