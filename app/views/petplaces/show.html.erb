@@ -2,6 +2,8 @@
 
   <div class="banner-show"><img src="<%= @petplace.images %>" alt=""></div>
 
+  <br>
+
     <%=link_to petplaces_path do %>
     <div class="btn btn-ghost">Back</div>
     <% end %>
@@ -16,7 +18,22 @@
     <p><%= @petplace.details %></p>
     <h4>Reviews</h4>
 
-    <p><%= @petplace.reviews %></p>
+    <ul class="list-group">
+      <% @petplace.reviews.each do |review| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="badge badge-primary badge-pill">
+            <% counter = 0 %>
+            <% 5.times do %>
+              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+              <% counter += 1 %>
+            <% end %>
+          </span>
+          <%= review.appointment.user.first_name %>
+          <%= 'comment: ' %>
+          <%= review.description %>
+        </li>
+      <% end %>
+
     <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%></p>
     <p><%= "#{@petplace.price}€" %></p>
     <img class="avatar-large" alt="avatar-large" src="<%= @petplace.user.user_image %>" />
