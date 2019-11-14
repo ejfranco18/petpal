@@ -3,9 +3,9 @@ class AppointmentsController < ApplicationController
   before_action :set_petplace, only: [:new, :create]
   before_action :set_appointment, only: [:status_accepted, :status_declined]
 
-  def status_accepted
-    @appointment.status = 'accepted'
-  end
+  # def status_accepted
+  #   @appointment.status = 'accepted'
+  # end
 
   def status_pending
     @appointment = Appointment.find(params[:id])
@@ -14,8 +14,18 @@ class AppointmentsController < ApplicationController
     redirect_to dashboard_path, alert: 'Booking updated'
   end
 
-  def status_declined
+  def status_accepted
+    @appointment = Appointment.find(params[:id])
+    @appointment.status = 'accepted'
+    @appointment.save
+    redirect_to dashboard_path, alert: 'Booking accepted'
+  end
+
+  def status_canceled
+    @appointment = Appointment.find(params[:id])
     @appointment.status = 'canceled'
+    @appointment.save
+    redirect_to dashboard_path, alert: 'Booking canceled'
   end
 
   def index
