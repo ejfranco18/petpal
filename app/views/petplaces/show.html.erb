@@ -28,13 +28,13 @@
               <% counter += 1 %>
             <% end %>
           </span>
-          <%= review.appointment.user.first_name %>
+          <%= review.appointment.petplace.user.first_name %>
           <%= 'comment: ' %>
           <%= review.description %>
         </li>
       <% end %>
 
-    <%= render "reviews/new", petplace: @petplace, review: @review %>
+    <%= render "reviews/new", petplace: @petplace, appointment: @appointment, review: @review %>
 
     <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%></p>
     <p><%= "#{@petplace.price}€" %></p>

@@ -29,11 +29,13 @@ class AppointmentsController < ApplicationController
   end
 
   def new
+    @petplace = Petplace.find(params[:petplace_id])
     @appointment = Appointment.new
   end
 
   def create
     @appointment = Appointment.new(appointment_params)
+    @petplace = Petplace.find(params[:petplace_id])
     # if @user
     @appointment.user = @user
     @appointment.petplace = @petplace
