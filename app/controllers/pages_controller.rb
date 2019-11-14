@@ -5,7 +5,6 @@ class PagesController < ApplicationController
   # def home
   # end
 
-
   def test_slide
     if current_user
       @petplaces = Petplace.where("user_id = #{current_user.id}")

@@ -1,7 +1,7 @@
 <div class="flex-fill">
   <% @petplaces.each do |petplace| %>
   <div class="card m-3" id="width">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= petplace.images %>)">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= petplace.images.split(',').first %>)">
       <div class="p-5">
         <p><%= link_to petplace.name, petplace_path(petplace) %></p>
         <div><%=link_to edit_petplace_path(petplace) do %>

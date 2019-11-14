@@ -15,14 +15,16 @@
     <p><%= @petplace.address %></p>
     <p>Price per night: <%= "#{@petplace.price}€" %></p>
     <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%><img class="avatar" alt="" src="<%= @petplace.user.user_image %>" /></p>
-    <p>Rating:
-      <% @rating.times do %>
-      <i class="fas fa-bone positive"></i>
+    <% if @rating > 0 %>
+      <p>Rating:
+        <% @rating.times do %>
+        <i class="fas fa-bone positive"></i>
+        <% end %>
+        <% (5 - @rating).times do %>
+        <i class="fas fa-bone negative"></i>
+        <% end %>
+      </p>
       <% end %>
-      <% (5 - @rating).times do %>
-      <i class="fas fa-bone negative"></i>
-      <% end %>
-    </p>
     <%=link_to new_petplace_appointment_path(params[:id]) do %>
       <div class="btn btn-flat">Book</div>
     <% end %>
@@ -41,22 +43,26 @@
 
     <h4>Reviews</h4>
     <div class="review">
-      <% @petplace.reviews.each do |review| %>
-        <div class="card-review">
-        <div class="card-review-infos">
-          <h2><%= "#{review.appointment.user.first_name} #{review.appointment.user.last_name}" %><img class="avatar" alt="" src="<%= review.appointment.user.user_image %>" /></h2>
-          <p><%= review.description %></p>
-          <p>Rated:
-            <% review.rating.times do %>
-            <i class="fas fa-bone positive"></i>
-            <% end %>
-            <% (5 - review.rating).times do %>
-            <i class="fas fa-bone negative"></i>
-            <% end %>
-          </p>
-        </div>
-    </div>
-    <% end %>
+      <% if @rating > 0 %>
+        <% @petplace.reviews.each do |review| %>
+          <div class="card-review">
+            <div class="card-review-infos">
+              <h2><%= "#{review.appointment.user.first_name} #{review.appointment.user.last_name}" %><img class="avatar" alt="" src="<%= review.appointment.user.user_image %>" /></h2>
+              <p><%= review.description %></p>
+              <p>Rated:
+                <% review.rating.times do %>
+                <i class="fas fa-bone positive"></i>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                <i class="fas fa-bone negative"></i>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No reviews yet.</<p>
+      <% end %>
     </div>
 
     <%=link_to new_petplace_appointment_path(params[:id]) do %>
