@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :appointments, only: [:new, :create]
   end
 
-  resources :appointments, only: [:show]
+  resources :appointments, only: [:show, :create] do
+    resources :reviews
+  end
   # add other routes  for  appointments [:index, show,]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

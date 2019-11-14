@@ -19,6 +19,7 @@ class PetplacesController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @petplace = Petplace.find(params[:id])
 
     @markers = [{

@@ -23,6 +23,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
+    review = Review.new
     @appointment = Appointment.find(params[:id])
     @petplace = Petplace.find(@appointment.petplace_id)
   end

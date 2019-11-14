@@ -34,6 +34,8 @@
         </li>
       <% end %>
 
+    <%= render "reviews/new", petplace: @petplace, review: @review %>
+
     <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%></p>
     <p><%= "#{@petplace.price}€" %></p>
     <img class="avatar-large" alt="avatar-large" src="<%= @petplace.user.user_image %>" />

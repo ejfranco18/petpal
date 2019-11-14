@@ -3,8 +3,11 @@ class ReviewsController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @review = Review.new(review_params)
     @review.appointment = @appointment
-    @review.save
-    redirect_to petplace_path(@petplace)
+    if @review.save
+      redirect_to petplace_path(@petplace)
+    else
+      render 'petplace/show'
+    end
   end
 
   private
