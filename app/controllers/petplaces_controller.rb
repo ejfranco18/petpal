@@ -20,6 +20,7 @@ class PetplacesController < ApplicationController
 
   def show
     @petplace = Petplace.find(params[:id])
+    @images = @petplace.images.split(",")
 
     @markers = [{
         lat: @petplace.latitude,

@@ -1,25 +1,44 @@
 <div class="container">
+  <div class="petplace">
+    <h4><%= @petplace.address %></h4>
+    <p><%= @petplace.name %></p>
+  <div class="petplace-main">
+    <div class="slide">
+      <div class="glide">
+        <div data-glide-el="track" class="glide__track">
+          <ul class="glide__slides">
+            <%= @images.each do |image| %>
+              <li class="glide__slide"><img src="<%= image %>" alt=""></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <h4><%= @petplace.address %></h4>
+      <p><%= @petplace.name %></p>
+      <p><%= "#{@petplace.price}€" %></p>
+      <%=link_to new_petplace_appointment_path(params[:id]) do %>
+        <div class="btn btn-flat">Book</div>
+      <% end %>
+    </div>
+  </div>
 
-  <div class="banner-show"><img src="<%= @petplace.images %>" alt=""></div>
 
-    <%=link_to petplaces_path do %>
-    <div class="btn btn-ghost">Back</div>
-    <% end %>
+
+
+    <p><%= @petplace.details %></p>
+
+
+
+    <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%><img class="avatar-large" alt="avatar-large" src="<%= @petplace.user.user_image %>" /></p>
+    <p><%= "#{@petplace.price}€" %></p>
+    <h4>Reviews</h4>
+    <p><%= @petplace.reviews %></p>
 
     <%=link_to new_petplace_appointment_path(params[:id]) do %>
     <div class="btn btn-flat">Book</div>
     <% end %>
-  <div class="petplace">
-
-    <h4><%= @petplace.address %></h4>
-    <p><%= @petplace.name %></p>
-    <p><%= @petplace.details %></p>
-    <h4>Reviews</h4>
-
-    <p><%= @petplace.reviews %></p>
-    <p>Hosted by <%= "#{@petplace.user.first_name} #{@petplace.user.last_name }"%></p>
-    <p><%= "#{@petplace.price}€" %></p>
-    <img class="avatar-large" alt="avatar-large" src="<%= @petplace.user.user_image %>" />
     <div
         id="map"
         style="width: 100%;
@@ -29,5 +48,6 @@
         >
       </div>
   </div>
+
 </div>
 
