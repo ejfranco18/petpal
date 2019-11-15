@@ -1,4 +1,11 @@
 class Petplace < ApplicationRecord
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name_and_details,
+    against: [:name, :details],
+    using: {
+      tsearch: { prefix: true }
+    }
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   belongs_to :user
