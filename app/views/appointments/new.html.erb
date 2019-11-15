@@ -1,6 +1,6 @@
 <div class="container-form">
   <h2 class="signup">New Booking</h>
-  <p id="p">Choose your dates</p>
+  <p id="p">Choose your dates:</p>
   <div class="container">
     <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
         <div class="styling-container">
@@ -8,7 +8,7 @@
           <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
           <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
           <div class="form-actions">
-          <%= f.button :submit, "Choose dates"%>
+          <%= f.button :submit, "Book it"%>
           <% end %>
           </div>
         </div>
