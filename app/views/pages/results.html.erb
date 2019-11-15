@@ -1,0 +1,17 @@
+<div class="container results">
+  <h1>Results</h1>
+  <div class="container card_list">
+    <div class="titles">
+      <h3>Here are the results of your search:</h3>
+    </div>
+    <div class="cards results">
+      <% @results.each do |result| %>
+      <div class="pet-card">
+          <p><%= link_to result.name, results_path(result) %></p>
+          <p><%= result.details %></p>
+          <img src="<%= result.images.split(',').first %>" alt="">
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
