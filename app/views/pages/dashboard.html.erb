@@ -88,8 +88,10 @@
             <%=link_to pending_path(appointment), method: :patch do %>
               <div class="btn btn-flat">Book</div>
             <% end %>
-          <% elsif appointment.status == 'confirmed' %>
-
+          <% elsif appointment.status == 'accepted' %>
+            <%= link_to new_petplace_appointment_review_path(petplace, appointment), method: :get do %>
+              <div class="btn btn-flat">Write review</div>
+            <% end %>
           <!-- add code for confirmed bookings -->
           <% end %>
         </div>

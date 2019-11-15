@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+
     if current_user
       @petplaces = Petplace.where(user: current_user)
       @appointments_booked = Appointment.where(user: current_user)

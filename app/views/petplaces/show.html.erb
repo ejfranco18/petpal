@@ -66,11 +66,6 @@
       <% end %>
     </div>
 
-
-    <%= render "reviews/new", petplace: @petplace, appointment: @appointment, review: @review %>
-
-
-
     <%=link_to new_petplace_appointment_path(params[:id]) do %>
     <div class="btn btn-flat book-petplace">Book</div>
     <% end %>
