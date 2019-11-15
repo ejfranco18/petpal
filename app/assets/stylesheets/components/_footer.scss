@@ -1,16 +1,36 @@
 .footer {
   justify-content: space-between;
-  background-color: #1EDD88;
+  background-color: #706F79;
   margin-top:50px;
+  height: 200px;
+  padding: 0 80px;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 
 .footer .logo-footer img {
   width: 150px;
   margin-left: 20%;
+  color: #1EDD88
 }
 
-i .footer{
-  color:#676771f0;
-  font-size: 1.5rem;
+.footer i {
+  font-size: 40px;
 
+}
+
+.footer a:hover {
+  color: #F5F5F5;
+}
+
+.line{
+  width: 90%;
+  height: 120px;
+  border-bottom: 1px solid black;
+  position: absolute;
 }
