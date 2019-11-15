@@ -9,7 +9,7 @@
       <div class="pet-card">
           <p><%= link_to petplace.name, petplace_path(petplace) %></p>
           <p><%= petplace.details %></p>
-          <img src="<%= petplace.images %>" alt="">
+          <img src="<%= petplace.images.split(',').first %>" alt="">
       </div>
       <% end %>
     </div>
@@ -18,7 +18,7 @@
       <div
         id="map"
         style="width: 100%;
-        height: 600px;"
+        height: 800px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         >
