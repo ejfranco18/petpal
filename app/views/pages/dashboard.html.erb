@@ -34,6 +34,9 @@
               <%=link_to accepted_path(appointment), method: :patch do %>
                 <div class="btn btn-flat">Accept booking</div>
               <% end %>
+              <%=link_to canceled_path(appointment), method: :patch do %>
+                <div class="btn btn-flat-red">Refuse booking</div>
+              <% end %>
             <%# elsif appointment.status == "accepted" && appointment.end_date > Time.now %>
                 <%#=link_to review_client_path(appointment), method: :patch do %>
                 <!-- <div class="btn btn-flat">Review Pet</div> -->
@@ -41,7 +44,7 @@
               <!-- path to review has still to be added -->
             <% elsif appointment.status == "accepted" %>
               <%=link_to canceled_path(appointment), method: :patch do %>
-                <div class="btn btn-flat">Cancel booking</div>
+                <div class="btn btn-flat-red">Cancel booking</div>
               <% end %>
             <% else %>
               <p>Unfortunately you canceled the booking.</p>
