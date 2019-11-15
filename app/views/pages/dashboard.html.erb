@@ -45,6 +45,10 @@
             <% elsif appointment.status == "accepted" %>
               <%=link_to canceled_path(appointment), method: :patch do %>
                 <div class="btn btn-flat-red">Cancel booking</div>
+
+              <%= link_to new_petplace_review do%>
+                <div class="btn btn-flat">Create a review</div>
+              <% end %>
               <% end %>
             <% else %>
               <p>Unfortunately you canceled the booking.</p>
