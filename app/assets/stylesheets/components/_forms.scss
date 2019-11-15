@@ -53,11 +53,11 @@
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: none;
   border-radius: 5px;
   -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
 }
 
 
@@ -67,6 +67,7 @@ label {
   margin-top: 0.5rem;
   color:white;
   font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
 }
 
 textarea{
@@ -96,4 +97,9 @@ a{
   background-position: center right calc(0.375em + 0.1875rem);
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   color:#b6b6c2;
+}
+
+#p{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size:1.5rem;
 }
