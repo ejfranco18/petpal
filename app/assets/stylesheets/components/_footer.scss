@@ -3,13 +3,18 @@
   background-color: #706F79;
   margin-top:50px;
   height: 200px;
-  padding: 0 80px;
+  padding: 60px 80px 5px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 
   .wrapper {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
+    z-index: 1000;
   }
 }
 
@@ -20,17 +25,28 @@
 }
 
 .footer i {
-  font-size: 40px;
-
+  font-size: 30px;
 }
 
 .footer a:hover {
   color: #F5F5F5;
 }
 
+.divider {
+  width: 100%;
+}
+
 .line{
   width: 90%;
-  height: 120px;
-  border-bottom: 1px solid black;
+  height: 70px;
+  border-bottom: 1px solid rgba(50,50,50, 0.6);
   position: absolute;
+  z-index: 1;
+}
+
+.disclaimer {
+  font-size: 9px;
+  text-align: center;
+  line-height: 0px;
+  color: #d9d7d7;
 }
