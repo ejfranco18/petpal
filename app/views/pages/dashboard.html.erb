@@ -88,7 +88,8 @@
             <%=link_to pending_path(appointment), method: :patch do %>
               <div class="btn btn-flat">Book</div>
             <% end %>
-          <% else %>
+          <% elsif appointment.status == 'confirmed' %>
+
           <!-- add code for confirmed bookings -->
           <% end %>
         </div>
