@@ -1,60 +1,103 @@
-<div class="flex-fill">
-  <% @petplaces.each do |petplace| %>
-  <div class="card m-3" id="width">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= petplace.images.split(',').first %>)">
-      <div class="p-5">
-        <p><%= link_to petplace.name, petplace_path(petplace) %></p>
-        <div><%=link_to edit_petplace_path(petplace) do %>
-          <i class="far fa-edit"></i>
-          <% end %>
-          <%=link_to petplace_path(petplace), method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
+<% if current_user.role == 'Pet Sitter' %>
+  <div class="flex-fill">
+    <% @petplaces.each do |petplace| %>
+    <div class="card m-3" id="width">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= petplace.images.split(',').first %>)">
+        <div class="p-5">
+          <p><%= link_to petplace.name, petplace_path(petplace) %></p>
+          <div><%=link_to edit_petplace_path(petplace) do %>
+            <i class="far fa-edit"></i>
+            <% end %>
+            <%=link_to petplace_path(petplace), method: :delete do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <p class="description-dashboard">Description: <%= petplace.details %></p>
+      <h2>Booking requests: </h2>
+      <% petplace.appointments.each do |appointment| %>
+        <% unless appointment.status == "selected" %>
+          <div class="request-card">
+            <h2><%= appointment.user.first_name %> <%= appointment.user.last_name %></h2>
+            <% booking_user = User.find(appointment.user_id) %>
+            <% unless booking_user.user_image == nil %>
+              <%= image_tag booking_user.user_image, class: "avatar" %>
+              <% end %>
+            <% unless appointment.user.pet_name == nil%>
+              <p>Pet name: <%= appointment.user.pet_name %> (<%= appointment.user.pet_type %>)</p>
+            <% end %>
+            <p>From: <%= appointment.start_date %></p>
+            <p>Until: <%= appointment.end_date %></p>
+            <p>Value: € <%= ((Petplace.find(appointment.petplace_id).price * (appointment.end_date - appointment.start_date)).to_i) %></p>
+            <h2><%= appointment.status %></h2>
+            <% if appointment.status == "pending" %>
+                <%=link_to accepted_path(appointment), method: :patch do %>
+                  <div class="btn btn-flat">Accept booking</div>
+                <% end %>
+                <%=link_to canceled_path(appointment), method: :patch do %>
+                  <div class="btn btn-flat-red">Refuse booking</div>
+                <% end %>
+              <%# elsif appointment.status == "accepted" && appointment.end_date > Time.now %>
+                  <%#=link_to review_client_path(appointment), method: :patch do %>
+                  <!-- <div class="btn btn-flat">Review Pet</div> -->
+              <%# end %>
+                <!-- path to review has still to be added -->
+              <% elsif appointment.status == "accepted" %>
+                <%=link_to canceled_path(appointment), method: :patch do %>
+                  <div class="btn btn-flat-red">Cancel booking</div>
+
+                <%#= link_to new_petplace_review do%>
+                  <!-- <div class="btn btn-flat">Create a review</div> -->
+                <%# end %>
+                <% end %>
+              <% else %>
+                <p>Unfortunately you canceled the booking.</p>
+            <% end %>
+            <!-- add if for status with links here -->
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="flex-fill">
+    <h2>Your bookings:</h2>
+    <% @appointments_booked.each do |appointment| %>
+      <% petplace = appointment.petplace %>
+      <div class="card m-3" id="width">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= petplace.images.split(',').first %>)">
+          <div class="p-5">
+            <p><%= link_to petplace.name, petplace_path(petplace) %></p>
+          </div>
+        </div>
+        <div>
+          <p>Petsitter: <%= petplace.user.first_name %> <%= petplace.user.last_name%></p>
+          <p>Start: <%= appointment.start_date %></p>
+          <p>End: <%= appointment.end_date %></p>
+          <p>Price: € <%= (petplace.price * (appointment.end_date - appointment.start_date).to_i) %></p>
+        </div>
+        <div>
+          <p>Status: <%= appointment.status %></p>
+          <% if appointment.status == "pending" %>
+            <%=link_to canceled_path(appointment), method: :patch do %>
+              <div class="btn btn-flat-red">Cancel request</div>
+            <% end %>
+          <% elsif appointment.status == 'selected' %>
+            <%=link_to pending_path(appointment), method: :patch do %>
+              <div class="btn btn-flat">Book</div>
+            <% end %>
+          <% elsif appointment.status == 'accepted' %>
+            <%= link_to new_petplace_appointment_review_path(petplace, appointment), method: :get do %>
+              <div class="btn btn-flat">Write review</div>
+            <% end %>
+          <!-- add code for confirmed bookings -->
           <% end %>
         </div>
       </div>
-    </div>
-    <p class="description-dashboard">Description: <%= petplace.details %></p>
-    <h2>Booking requests: </h2>
-    <% petplace.appointments.each do |appointment| %>
-      <% unless appointment.status == "selected" %>
-        <div class="request-card">
-          <h2><%= appointment.user.first_name %> <%= appointment.user.last_name %></h2>
-          <% booking_user = User.find(appointment.user_id) %>
-          <% unless booking_user.user_image == nil %>
-            <%= image_tag booking_user.user_image, class: "avatar" %>
-            <% end %>
-          <% unless appointment.user.pet_name == nil%>
-            <p>Pet name: <%= appointment.user.pet_name %> (<%= appointment.user.pet_type %>)</p>
-          <% end %>
-          <p>From: <%= appointment.start_date %></p>
-          <p>Until: <%= appointment.end_date %></p>
-          <p>Value: € <%= ((Petplace.find(appointment.petplace_id).price * (appointment.end_date - appointment.start_date)).to_i) %></p>
-          <h2><%= appointment.status %></h2>
-          <% if appointment.status == "pending" %>
-              <%=link_to accepted_path(appointment), method: :patch do %>
-                <div class="btn btn-flat">Accept booking</div>
-              <% end %>
-            <%# elsif appointment.status == "accepted" && appointment.end_date > Time.now %>
-                <%#=link_to review_client_path(appointment), method: :patch do %>
-                <!-- <div class="btn btn-flat">Review Pet</div> -->
-            <%# end %>
-              <!-- path to review has still to be added -->
-            <% elsif appointment.status == "accepted" %>
-              <%=link_to canceled_path(appointment), method: :patch do %>
-                <div class="btn btn-flat">Cancel booking</div>
-
-              <%= link_to new_petplace_review do%>
-                <div class="btn btn-flat">Create a review</div>
-              <% end %>
-
-              <% end %>
-            <% else %>
-              <p>Unfortunately you canceled the booking.</p>
-          <% end %>
-          <!-- add if for status with links here -->
-        </div>
-      <% end %>
     <% end %>
   </div>
-  <% end %>
-</div>
+<% end %>
+
+

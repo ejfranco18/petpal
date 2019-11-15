@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :set_user, only: [:new, :create] #, :edit, :update needet to be added?
-  before_action :set_petplace, only: [:new, :create]
+  before_action :set_petplace, only: [:new]
   before_action :set_appointment, only: [:status_accepted, :status_declined]
 
   # def status_accepted

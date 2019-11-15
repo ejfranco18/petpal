@@ -21,12 +21,19 @@
   transition: background 0.3s ease;
 }
 
+.btn-flat-red {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #EE2E31;
+  transition: background 0.3s ease;
+}
+
 .btn-flat:hover {
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   transform: translate3d(0, 0, 0);
   perspective: 1000px;
 }
-
 
 .btn-ghost {
   color: #4A4A4A;
