@@ -12,7 +12,8 @@
     font-family: Roboto Condensed;
 }
 
-.btn-flat {
+
+.btn-flat{
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
@@ -28,6 +29,12 @@
   transition: background 0.3s ease;
 }
 
+.btn-flat:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
+
 .btn-ghost {
   color: #4A4A4A;
   border: 1px solid #4A4A4A;
@@ -37,10 +44,32 @@
   opacity: 0.6;
   transition: opacity 0.3s ease;
 }
+
 input.btn{
     margin: 20px 10px;
     background: #1EDD88;
     color: white;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
+}
+
+input.btn:hover{
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

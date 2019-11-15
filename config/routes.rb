@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
+  get 'search', to: 'pages#search'
+  get 'results', to: 'pages#results'
   patch 'status_pending/:id', to: 'appointments#status_pending', as: 'pending'
   patch 'status_accepted/:id', to: 'appointments#status_accepted', as: 'accepted'
   patch 'status_canceled/:id', to: 'appointments#status_canceled', as: 'canceled'

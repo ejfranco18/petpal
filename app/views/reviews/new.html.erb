@@ -1,6 +1,15 @@
-<h3>Add a review</h3>
-<%= simple_form_for [@petplace, @appointment, @review] do |f| %>
-  <%= f.input :rating, collection: 0..5 %>
-  <%= f.input :description %>
-  <%= f.submit class: "btn btn-primary"%>
-<% end %>
+<div class="container-form">
+    <h2 class="signup">Add a Review</h2>
+      <div class="container">
+         <div class="styling-container">
+      <%= simple_form_for [@petplace, @appointment, @review] do |f| %>
+        <%= f.input :rating, collection: 0..5 %>
+        <%= f.input :description %>
+          <div class="form-actions">
+              <%= f.button :submit, "Add a Review"%>
+              <% end %>
+          </div>
+    </div>
+  </div>
+</div>
+
