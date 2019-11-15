@@ -1,5 +1,5 @@
 <h3>Add a review</h3>
-<%= simple_form_for [appointment, review] do |f| %>
+<%= simple_form_for [@petplace, @appointment, @review] do |f| %>
   <%= f.input :rating, collection: 0..5 %>
   <%= f.input :description %>
   <%= f.submit class: "btn btn-primary"%>

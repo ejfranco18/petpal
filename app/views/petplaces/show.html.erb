@@ -41,6 +41,7 @@
 
     <p><%= @petplace.details %></p>
 
+
     <h4>Reviews</h4>
     <div class="review">
       <% if @rating > 0 %>
@@ -65,9 +66,15 @@
       <% end %>
     </div>
 
+
+    <%= render "reviews/new", petplace: @petplace, appointment: @appointment, review: @review %>
+
+
+
     <%=link_to new_petplace_appointment_path(params[:id]) do %>
     <div class="btn btn-flat book-petplace">Book</div>
     <% end %>
+
     <div
         id="map"
         style="width: 100%;

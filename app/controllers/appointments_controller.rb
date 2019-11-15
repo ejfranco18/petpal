@@ -33,16 +33,19 @@ class AppointmentsController < ApplicationController
   end
 
   def show
+    review = Review.new
     @appointment = Appointment.find(params[:id])
     @petplace = Petplace.find(@appointment.petplace_id)
   end
 
   def new
+    @petplace = Petplace.find(params[:petplace_id])
     @appointment = Appointment.new
   end
 
   def create
     @appointment = Appointment.new(appointment_params)
+    @petplace = Petplace.find(params[:petplace_id])
     # if @user
     @appointment.user = @user
     @appointment.petplace = @petplace
