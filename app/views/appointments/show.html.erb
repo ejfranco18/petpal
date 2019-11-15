@@ -1,28 +1,25 @@
-
-
-
 <div class="petplace">
-  <h1>Booking overview</h1>
+  <h2 class="signup">Your Booking Overview</h2>
 
   <div class="card-deck m-3">
     <div class="card p-3 info">
       <h4><%= @petplace.address %></h4>
-      <p><%= @petplace.name %></p>
+      <p id="petplace-title"><strong><%= @petplace.name %></strong></p>
       <p><%= @petplace.details %></p>
       <!-- <img src='<%#= @petplace.images %>' alt="petplace image"> -->
     </div>
 
-    <div class="card p-3 check">
-      <h4>TOTAL:</h4>
-      <div><p>Starting Date: <%= @appointment.start_date %></p></div>
-      <div><p>Ending Date: <%= @appointment.end_date %></p></div>
-      <div><p>Duration: <% duration = (@appointment.end_date - @appointment.start_date) %> <%= duration.to_i %> Days</p></div>
-      <div><p>Price per Day: <%=  %></p></div>
-      <div><p><%= @petplace.price %>€ x <%= duration.to_i %> Days: <%= (@petplace.price * duration).to_i %>€</p></div>
-      <div><p>Included VAT (21%): €<%= ((@petplace.price * duration).to_i) * 0.21 %></p></div>
-      <div><p>TOTAL: €<%= ((@petplace.price * duration).to_i)%></p></div>
+      <div class="card p-3 check">
+        <h4>TOTAL:</h4>
+        <div><p><strong style="text-decoration: underline">Starting Date: </strong><%= @appointment.start_date %></p></div>
+        <div><p><strong style="text-decoration: underline">Ending Date:</strong> <%= @appointment.end_date %></p></div>
+        <div><p><strong style="text-decoration: underline">Duration: </strong><% duration = (@appointment.end_date - @appointment.start_date) %> <%= duration.to_i %> Days</p></div>
+        <div><p><strong style="text-decoration: underline">Overview: </strong><%=  %></p></div>
+        <div><p><%= @petplace.price %>€ x <%= duration.to_i %> Days: <%= (@petplace.price * duration).to_i %>€</p></div>
+        <div><p>Included VAT (21%): €<%= ((@petplace.price * duration).to_i) * 0.21 %></p></div>
+        <div><p><strong style="text-decoration: underline">TOTAL: € </strong><%= ((@petplace.price * duration).to_i)%></p></div>
+      </div>
     </div>
-  </div>
 
     <!-- <h4>Reviews</h4> -->
 
@@ -37,12 +34,9 @@
     <%=link_to petplace_path(Petplace.find(Appointment.find(params[:id]).petplace_id)) do %>
     <div class="btn btn-ghost">Back</div>
     <% end %>
-
   <!-- Remember to update the path to booking -->
     <%=link_to pending_path(@appointment), method: :patch do %>
-    <div class="btn btn-flat">Confirm booking request</div>
+    <div class="btn btn-flat">Confirm booking</div>
     <% end %>
   </div>
-
-
 </div>

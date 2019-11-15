@@ -1,12 +1,19 @@
-<h1>New appointment</h1>
-
-<div class="container">
-  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-    <h2>Flatpickr Demo</h2>
-    <%= simple_form_for([@petplace, @appointment]) do |f| %>
-      <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.button :submit, "Choose dates", class: "btn btn-primary"%>
-    <% end %>
+<div class="container-form">
+  <h2 class="signup">New Booking</h>
+  <p id="p">Choose your dates:</p>
+  <div class="container">
+    <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+        <div class="styling-container">
+        <%= simple_form_for([@petplace, @appointment]) do |f| %>
+          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <div class="form-actions">
+          <%= f.button :submit, "Book it"%>
+          <% end %>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
+
+

@@ -51,8 +51,11 @@ class AppointmentsController < ApplicationController
     @appointment.petplace = @petplace
     @appointment.status = 'selected'
     if current_user
-      @appointment.save!
-      redirect_to appointment_path(@appointment) # maybe has to be changed to confirmation page
+      if @appointment.save
+        redirect_to appointment_path(@appointment) # maybe has to be changed to confirmation page
+      else
+        render :new
+      end
     else
       redirect_to new_user_session_path
     end
