@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :petplaces do
     resources :reviews, only: [:new, :create]
   end
+
+  resources :appointments, only: [:show]
   # add other routes  for  appointments [:index, show,]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
